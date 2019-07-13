@@ -32,7 +32,7 @@ class Auth extends CI_Controller
                             'role_id' => $user['role_id']
                         ];
                         $this->session->set_userdata($data);
-                        $this->load->view('admin/user/index');
+                        redirect('admin/home');
                     } else {
                         $this->session->set_flashdata('message', '<div class= "alert alert-danger alert-dismissi ble">
                         <button typ e="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
