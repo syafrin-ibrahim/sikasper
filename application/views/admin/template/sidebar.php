@@ -56,6 +56,24 @@
                </p>
              </a>
            </li>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/kategori'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 KATEGORI ADUAN
+
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/kecamatan'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 KECAMATAN
+
+               </p>
+             </a>
+           </li>
          <?php
           }
           ?>
@@ -73,16 +91,40 @@
              </a>
            </li>
          <?php  }
-          ?>
-         < <li class="nav-header">SETTING</li>
+
+          if ($user['role_id'] == 4) {
+            ?>
+
            <li class="nav-item">
-             <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
-               <i class="nav-icon fas fa-sign-out-alt"></i>
+             <a href="<?= base_url('admin/aduan'); ?>" class="nav-link">
+               <i class="nav-icon far fa-calendar-alt"></i>
                <p>
-                 &nbsp;Log-Out
+                 Dashboard
+
                </p>
              </a>
            </li>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/aduan/create'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 INPUT ADUAN
+
+               </p>
+             </a>
+           </li>
+         <?php
+          }
+          ?>
+         <li class="nav-header">SETTING</li>
+         <li class="nav-item">
+           <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
+             <i class="nav-icon fas fa-sign-out-alt"></i>
+             <p>
+               &nbsp;Log-Out
+             </p>
+           </a>
+         </li>
 
 
        </ul>
