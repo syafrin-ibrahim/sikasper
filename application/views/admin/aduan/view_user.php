@@ -21,13 +21,13 @@
     <section class="content">
 
 
-       <?php
-       if($user['role_id'] == 4){ ?>
-            <a href="<?= base_url('admin/aduan/create'); ?>" class="btn btn-primary btn-sm">Input Aduan</a>
+        <?php
+        if ($user['role_id'] == 4) { ?>
+            <a href="<?= base_url('admin/aduan_u/create'); ?>" class="btn btn-primary btn-sm">Input Aduan</a>
             <br /><br />
 
 
-       <?php }
+        <?php }
         ?>
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
@@ -69,7 +69,7 @@
                                 <td>" . $a->nama_kec . "</td>
                                 <td>" . $a->tgl_aduan . "</td>"
                                 . $button . "                               
-                                <td>" . anchor("admin/aduan/aksi/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
+                                <td><i class='far fa-folder-open'></i></td>
                                 </tr>";
                             $no++;
                         }

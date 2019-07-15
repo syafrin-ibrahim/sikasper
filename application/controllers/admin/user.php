@@ -10,6 +10,10 @@ class User extends CI_Controller
         $this->load->model('admin/mod_user');
         if (!$this->session->userdata('email')) {
             redirect('auth');
+        } else {
+            if ($this->session->userdata('role_id') != 1) {
+                redirect('auth');
+            }
         }
     }
     public function index()

@@ -28,9 +28,9 @@
             <?php
             //  echo form_open_multipart('admin/product/post');
             ?>
-            <form role="form" method="post" action="<?= base_url('admin/aduan_a/aksi_adm') ?>" enctype="multipart/form-data">
+            <form role="form" method="post" action="<?= base_url('admin/aduan_kds/aksi_kds') ?>" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?= $aduan['aduan_id']; ?>">
-                <input type="hidden" name="status" value="3">
+                <input type="hidden" name="status" value="4">
                 <div class="box-body">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -82,9 +82,9 @@
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" name="submit" class="btn btn-primary">DISPOSISI KADIS</button>
+                        <button type="submit" name="submit" class="btn btn-primary">DISELESAIKAN</button>
                         <?php
-                        echo anchor('admin/aduan_a', 'Kembali', array('class' => 'btn btn-primary'));
+                        echo anchor('admin/aduan_kds', 'Kembali', array('class' => 'btn btn-primary'));
                         ?>
                     </div><br />
             </form>

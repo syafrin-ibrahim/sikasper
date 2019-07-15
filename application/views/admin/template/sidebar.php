@@ -14,7 +14,7 @@
          <img src="<?= base_url('asset'); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
        </div>
        <div class="info">
-         <a href="#" class="d-block">user 01</a>
+         <a href="#" class="d-block"><?= $user['role_id']; ?></a>
        </div>
      </div>
 
@@ -48,7 +48,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan/aduan_admin'); ?> " class="nav-link">
+             <a href="<?= base_url('admin/aduan_a'); ?> " class="nav-link">
                <i class="nav-icon fas fa-user-tie"></i>
                <p>
                  ADUAN
@@ -96,7 +96,7 @@
             ?>
 
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan/aduan_user'); ?>" class="nav-link">
+             <a href="<?= base_url('admin/aduan_u'); ?>" class="nav-link">
                <i class="nav-icon far fa-calendar-alt"></i>
                <p>
                  Dashboard
@@ -105,7 +105,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan/create'); ?> " class="nav-link">
+             <a href="<?= base_url('admin/aduan_u/create'); ?> " class="nav-link">
                <i class="nav-icon fas fa-user-tie"></i>
                <p>
                  INPUT ADUAN
@@ -115,8 +115,19 @@
            </li>
          <?php
           } else if ($user['role_id'] == 3) { ?>
+           <li class="nav-header">MENU</li>
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan'); ?>" class="nav-link">
+             <a href="<?= base_url('admin/aduan_k'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 Data Aduan
+
+               </p>
+             </a>
+           </li>
+         <?php } else if ($user['role_id'] == 2) { ?>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/aduan_kds'); ?>" class="nav-link">
                <i class="nav-icon far fa-calendar-alt"></i>
                <p>
                  Dashboard
@@ -125,7 +136,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan/kec'); ?> " class="nav-link">
+             <a href="<?= base_url('admin/aduan_kds'); ?> " class="nav-link">
                <i class="nav-icon fas fa-user-tie"></i>
                <p>
                  Data Aduan

@@ -14,10 +14,10 @@ class Mod_aduan extends Ci_Model
     function select_by_user($id)
     {
         // return $this->db->get('aduan');
-       // $data['user']['user_id'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        // $data['user']['user_id'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status, tb3.sts_id,tb4.user_id
        FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3, users as tb4   
-       WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.user_id=tb4.user_id and tb4.user_id='".$id."'";
+       WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.user_id=tb4.user_id and tb4.user_id='" . $id . "'";
         return $this->db->query($query);
     }
 
@@ -27,6 +27,15 @@ class Mod_aduan extends Ci_Model
         $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status, tb3.sts_id
        FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3 
        WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.sts_id='1'";
+        return $this->db->query($query);
+    }
+
+    function select_kds()
+    {
+        // return $this->db->get('aduan');
+        $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status, tb3.sts_id
+       FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3 
+       WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.sts_id='3'";
         return $this->db->query($query);
     }
 
@@ -62,7 +71,7 @@ class Mod_aduan extends Ci_Model
     {
         $data = array(
             'sts_id'     =>  $this->input->post('status')
-           
+
         );
         $this->db->where('aduan_id', $this->input->post('id'));
         $this->db->update('aduan', $data);
@@ -72,10 +81,19 @@ class Mod_aduan extends Ci_Model
     {
         $data = array(
             'sts_id'     =>  $this->input->post('status')
-           
+
         );
         $this->db->where('aduan_id', $this->input->post('id'));
         $this->db->update('aduan', $data);
     }
 
+    function update_kds()
+    {
+        $data = array(
+            'sts_id'     =>  $this->input->post('status')
+
+        );
+        $this->db->where('aduan_id', $this->input->post('id'));
+        $this->db->update('aduan', $data);
+    }
 }

@@ -22,6 +22,7 @@
 
 
 
+
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
@@ -60,16 +61,10 @@
                                 <td>" . $no . "</td>
                                 <td>" . $a->judul . "</td>
                                 <td>" . $a->nama_kec . "</td>
-                                <td>" . $a->tgl_aduan . "</td>";
-                            if ($a->sts_id == 4 || $a->sts_id == 3) {
-                                echo $button . "                               
-                                <td><i class='far fa-folder-open'></i></td>
+                                <td>" . $a->tgl_aduan . "</td>"
+                                . $button . "                               
+                                <td>" . anchor("admin/aduan_kds/aksi_kds/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
                                 </tr>";
-                            } else {
-                                echo $button . "                               
-                                <td>" . anchor("admin/aduan_a/aksi_adm/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
-                                </tr>";
-                            }
                             $no++;
                         }
                         ?>

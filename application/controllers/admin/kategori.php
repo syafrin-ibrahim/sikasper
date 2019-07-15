@@ -10,6 +10,10 @@ class Kategori extends CI_Controller
         $this->load->model('admin/mod_kategori');
         if (!$this->session->userdata('email')) {
             redirect('auth');
+        } else {
+            if ($this->session->userdata('role_id') != 1) {
+                redirect('auth');
+            }
         }
     }
 

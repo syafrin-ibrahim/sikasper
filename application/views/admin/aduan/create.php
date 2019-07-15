@@ -28,7 +28,7 @@
             <?php
             //  echo form_open_multipart('admin/product/post');
             ?>
-            <form role="form" method="post" action="<?= base_url('admin/aduan/create') ?>" enctype="multipart/form-data">
+            <form role="form" method="post" action="<?= base_url('admin/aduan_u/create') ?>" enctype="multipart/form-data">
                 <input type="hidden" name="id_user" value="<?= $user['user_id']; ?>">
                 <div class="box-body">
                     <div class="col-md-6">
@@ -92,7 +92,7 @@
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                         <?php
-                        echo anchor('admin/aduan', 'Kembali', array('class' => 'btn btn-primary'));
+                        echo anchor('admin/aduan_u', 'Kembali', array('class' => 'btn btn-primary'));
                         ?>
                     </div>
             </form>
