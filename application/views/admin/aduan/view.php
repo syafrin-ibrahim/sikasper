@@ -21,12 +21,18 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/aduan/create'); ?>" class="btn btn-primary btn-sm">Input Aduan</a>
-        <br /><br />
+       <?php
+       if($user['role_id'] == 4){ ?>
+            <a href="<?= base_url('admin/aduan/create'); ?>" class="btn btn-primary btn-sm">Input Aduan</a>
+            <br /><br />
+
+
+       <?php }
+        ?>
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Data User</h3>
+                <h3 class="card-title">Data Aduan</h3>
             </div>
             <!-- /.card-header -->
 
@@ -49,13 +55,13 @@
                         foreach ($record as $a) {
                             $button = "";
                             if ($a->sts_id == 1) {
-                                $button = " <td><button class='btn btn-success btn-sm'>" . $a->sts_id . "</button></td>";
+                                $button = " <td><button class='btn btn-success btn-sm'>" . $a->status . "</button></td>";
                             } else if ($a->sts_id == 2) {
-                                $button = " <td><button class='btn btn-warning btn-sm'>" . $a->sts_id . "</button></td>";
+                                $button = " <td><button class='btn btn-warning btn-sm'>" . $a->status . "</button></td>";
                             } else if ($a->sts_id == 3) {
-                                $button = " <td><button class='btn btn-info btn-sm'>" . $a->sts_id . "</button></td>";
+                                $button = " <td><button class='btn btn-info btn-sm'>" . $a->status . "</button></td>";
                             } else if ($a->sts_id == 4) {
-                                $button = " <td><button class='btn btn-primary btn-sm'>" . $a->sts_id . "</button></td>";
+                                $button = " <td><button class='btn btn-primary btn-sm'>" . $a->status . "</button></td>";
                             }
                             echo "<tr>
                                 <td>" . $no . "</td>
@@ -63,7 +69,7 @@
                                 <td>" . $a->nama_kec . "</td>
                                 <td>" . $a->tgl_aduan . "</td>"
                                 . $button . "                               
-                                <td>" . anchor("admin/aduan/detail/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
+                                <td>" . anchor("admin/aduan/aksi/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
                                 </tr>";
                             $no++;
                         }

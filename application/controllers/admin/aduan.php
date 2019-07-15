@@ -27,6 +27,30 @@ class Aduan extends CI_Controller
         $this->load->view('admin/aduan/view', $data);
         $this->load->view('admin/template/footer');
     }
+    public function aduan_user(){
+      $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $id=$data['user']['user_id'];
+      $data['record'] = $this->mod_aduan->select_by_user($id)->result();
+      $this->load->view('admin/template/header', $data);
+      $this->load->view('admin/template/navbar', $data);
+      $this->load->view('admin/template/sidebar', $data);
+      $this->load->view('admin/aduan/view_admin', $data);
+      $this->load->view('admin/template/footer');
+
+    }
+
+    public function aduan_admin(){
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $id=$data['user']['user_id'];
+        $data['record'] = $this->mod_aduan->select_all()->result();
+        $this->load->view('admin/template/header', $data);
+        $this->load->view('admin/template/navbar', $data);
+        $this->load->view('admin/template/sidebar', $data);
+        $this->load->view('admin/aduan/view_admin', $data);
+        $this->load->view('admin/template/footer');
+  
+      }
+
 
     function create()
     {
@@ -69,5 +93,86 @@ class Aduan extends CI_Controller
             $this->load->view('admin/aduan/create', $data);
             $this->load->view('admin/template/footer');
         }
+    }
+
+    public function kec()
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        //  $data['aduan'] = $this->mod_aduan->select_all()->result();
+        //$data['kec'] = $this->db->get('kecamatan')->result();
+        //$data['kateg'] = $this->db->get('kategori_aduan')->result();
+        $data['record'] = $this->mod_aduan->select_kec()->result();
+        $this->load->view('admin/template/header', $data);
+        $this->load->view('admin/template/navbar', $data);
+        $this->load->view('admin/template/sidebar', $data);
+        $this->load->view('admin/aduan/view', $data);
+        $this->load->view('admin/template/footer');
+    }
+
+    public function aksi()
+    {
+        if (isset($_POST['submit'])) {
+            $this->form_validation->set_rules('status', 'Status Aduan', 'required|trim');
+            $idx=$this->input->post('id');
+
+
+            if ($this->form_validation->run() == false) {
+
+                $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+                $data['aduan']= $this->mod_aduan->select_one($idx)->row_array();
+                $this->load->view('admin/template/header', $data);
+                $this->load->view('admin/template/navbar', $data);
+                $this->load->view('admin/template/sidebar', $data);
+                $this->load->view('admin/aduan/aksi', $data);
+                $this->load->view('admin/template/footer');
+            } else {
+
+                $this->mod_aduan->update();
+                $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                Data berhasil Diubah.</div>');
+                redirect('admin/aduan');
+            }
+        } else {
+            $url = $this->uri->segment(4);
+          // var_dump($this->mod_aduan->select_one($url)->row_array());die;
+          $data['aduan']= $this->mod_aduan->select_one($url)->row_array();
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/navbar', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/aduan/aksi', $data);
+            $this->load->view('admin/template/footer');
+        }
+
+
+    }
+
+    public function aksi_adm()
+    {
+        if (isset($_POST['submit'])) {
+            
+            $idx=$this->input->post('id');
+            $this->mod_aduan->update_adm();
+            $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> Alert!</h5>
+            Data berhasil Diubah.</div>');
+            redirect('admin/aduan/aduan_admin');
+            
+        } else {
+            $url = $this->uri->segment(4);
+          // var_dump($this->mod_aduan->select_one($url)->row_array());die;
+          $data['aduan']= $this->mod_aduan->select_one($url)->row_array();
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/navbar', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/aduan/aksi_adm', $data);
+            $this->load->view('admin/template/footer');
+        }
+
+        
     }
 }

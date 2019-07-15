@@ -104,7 +104,7 @@ class User extends CI_Controller
             redirect('admin/user');
         } else {
             $id            = $this->uri->segment(4);
-            $data['user']   = $this->db->get_where('users', array('user_id' => $id))->row_array();
+            $data['users']   = $this->db->get_where('users', array('user_id' => $id))->row_array();
             $data['role'] =  $this->db->get('user_role')->result();
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/template/header', $data);

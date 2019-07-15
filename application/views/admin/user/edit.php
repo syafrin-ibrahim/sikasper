@@ -28,17 +28,17 @@
             //  echo form_open_multipart('admin/product/post');
             ?>
             <form role="form" method="post" action="<?= base_url('admin/user/edit') ?>">
-                <input type="hidden" class="form-control" name="id" value="<?= $user['user_id'] ?>">
+                <input type="hidden" class="form-control" name="id" value="<?= $users['user_id'] ?>">
                 <div class="box-body">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Nama User</label>
-                            <input type="text" class="form-control" name="nama" value="<?= $user['nama'] ?>" required>
+                            <input type="text" class="form-control" name="nama" value="<?= $users['nama'] ?>" required>
                             <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" required>
+                            <input type="email" class="form-control" name="email" value="<?= $users['email'] ?>" required>
                             <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                         </div>
 
@@ -48,7 +48,7 @@
                                 <?php
                                 foreach ($role as $k) {
                                     echo "<option value='$k->role_id' ";
-                                    echo $k->role_id == $user['role_id'] ? 'selected' : '';
+                                    echo $k->role_id == $users['role_id'] ? 'selected' : '';
                                     echo ">$k->role</option>";
                                 }
                                 ?>
@@ -59,13 +59,13 @@
                             <label>Status</label>
 
                             <div class="form-check">
-                                <input name="status" class="form-check-input" type="radio" value="1" <?php if ($user['is_active'] == 1) {
+                                <input name="status" class="form-check-input" type="radio" value="1" <?php if ($users['is_active'] == 1) {
                                                                                                             echo "checked";
                                                                                                         } ?>>
                                 <label class="form-check-label">Aktif</label>
                             </div>
                             <div class="form-check">
-                                <input name="status" class="form-check-input" type="radio" value="2" <?php if ($user['is_active'] == 2) {
+                                <input name="status" class="form-check-input" type="radio" value="2" <?php if ($users['is_active'] == 2) {
                                                                                                             echo "checked";
                                                                                                         } ?>> <label class="form-check-label">Non Aktif</label>
                             </div>

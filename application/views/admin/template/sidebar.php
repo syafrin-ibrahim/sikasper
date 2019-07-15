@@ -48,7 +48,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan'); ?> " class="nav-link">
+             <a href="<?= base_url('admin/aduan/aduan_admin'); ?> " class="nav-link">
                <i class="nav-icon fas fa-user-tie"></i>
                <p>
                  ADUAN
@@ -96,7 +96,7 @@
             ?>
 
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan'); ?>" class="nav-link">
+             <a href="<?= base_url('admin/aduan/aduan_user'); ?>" class="nav-link">
                <i class="nav-icon far fa-calendar-alt"></i>
                <p>
                  Dashboard
@@ -114,7 +114,26 @@
              </a>
            </li>
          <?php
-          }
+          } else if ($user['role_id'] == 3) { ?>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/aduan'); ?>" class="nav-link">
+               <i class="nav-icon far fa-calendar-alt"></i>
+               <p>
+                 Dashboard
+
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/aduan/kec'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 Data Aduan
+
+               </p>
+             </a>
+           </li>
+         <?php }
           ?>
          <li class="nav-header">SETTING</li>
          <li class="nav-item">

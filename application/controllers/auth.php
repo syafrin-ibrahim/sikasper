@@ -90,7 +90,7 @@ class Auth extends CI_Controller
                 'email' => htmlspecialchars(($this->input->post('email', true))),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'image' => 'default-image.jpg',
-                'role_id' => 2,
+                'role_id' => 4,
                 'is_active' => 1,
                 'created_at' => date('Y-m-d')
             ];

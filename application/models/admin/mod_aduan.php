@@ -5,15 +5,39 @@ class Mod_aduan extends Ci_Model
     function select_all()
     {
         // return $this->db->get('aduan');
-        $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status
+        $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status, tb3.sts_id
        FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3 
        WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id";
         return $this->db->query($query);
     }
 
-    function select_parent()
+    function select_by_user($id)
     {
-        //return $this->db->get_where('tabel_member', array('parent' => 0));
+        // return $this->db->get('aduan');
+       // $data['user']['user_id'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status, tb3.sts_id,tb4.user_id
+       FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3, users as tb4   
+       WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.user_id=tb4.user_id and tb4.user_id='".$id."'";
+        return $this->db->query($query);
+    }
+
+    function select_kec()
+    {
+        // return $this->db->get('aduan');
+        $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,tb3.status, tb3.sts_id
+       FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3 
+       WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.sts_id='1'";
+        return $this->db->query($query);
+    }
+
+    function select_one($id)
+    {
+        $query = "SELECT tb1.aduan_id,tb1.judul,tb1.alamat_aduan,tb1.keterangan,tb1.tgl_aduan,tb1.no_hp,tb2.nama_kec,tb3.status, tb3.sts_id
+        FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3 
+        WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.aduan_id='$id'";
+        return $this->db->query($query);
+        //return $this->db->get_where('aduan', array('aduan_id' => $id));
+
     }
 
 
@@ -37,12 +61,21 @@ class Mod_aduan extends Ci_Model
     function update()
     {
         $data = array(
-            'nama'     =>  $this->input->post('nama'),
-            'email'            =>  $this->input->post('email'),
-            'is_active'              =>  $this->input->post('status'),
-            'role_id' =>  $this->input->post('level')
+            'sts_id'     =>  $this->input->post('status')
+           
         );
-        $this->db->where('user_id', $this->input->post('id'));
-        $this->db->update('users', $data);
+        $this->db->where('aduan_id', $this->input->post('id'));
+        $this->db->update('aduan', $data);
     }
+
+    function update_adm()
+    {
+        $data = array(
+            'sts_id'     =>  $this->input->post('status')
+           
+        );
+        $this->db->where('aduan_id', $this->input->post('id'));
+        $this->db->update('aduan', $data);
+    }
+
 }
