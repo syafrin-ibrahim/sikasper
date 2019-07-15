@@ -89,7 +89,7 @@ class Aduan_u extends CI_Controller
             'ssmtp_host' => 'ssl://ssmtp.googlemail.com',
             'ssmtp_user' => 'mansurmoji@gmail.com',
             'ssmtp_pass' => 'mansurmoji07',
-            'ssmtp_ port' => '25',
+            'ssmtp_ port' => '465',
             'ssmtp_timeout' => '7',
             'mailtype' => 'html',
             'charset'   => 'utf-8',
