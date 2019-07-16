@@ -84,7 +84,7 @@ class Aduan_u extends CI_Controller
 
     private function _sendEmail()
     {
-        $config = [
+        /* $config = [
             'protocol' => 'ssmtp',
             'ssmtp_host' => 'ssl://ssmtp.googlemail.com',
             'ssmtp_user' => 'mansurmoji@gmail.com',
@@ -105,6 +105,37 @@ class Aduan_u extends CI_Controller
             return true;
         } else {
             echo $this->email->print_debugger();
+            die;
+        }*/
+
+        $this->load->library('phpmailer_lib');
+        $mail = $this->phpmailer_lib->load();
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'mansurmoji@gmail.com';
+        $mail->Password = 'mansurmoji07';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
+
+        $mail->setFrom('mansurmoji@gmail.com', 'sikasper admin');
+        $mail->addReplyTo('mansurmoji@gmail.com', 'sikasper admin');
+
+        $mail->addAddress('syafrinibrahim12@gmail.com');
+
+        $mail->Subject = 'ada aduan baru';
+        $mail->isHTML(true);
+
+        $content = "<h1>Ada Aduan Pengeboman Ikan</h1>";
+        $mail->Body = $content;
+
+        if (!$mail->send()) {
+            echo "pesan tidak terkirim";
+            echo "mail error : " .  $mail->ErrorInfo;
+            die;
+        } else {
+            echo "pesan terkirim";
             die;
         }
     }
