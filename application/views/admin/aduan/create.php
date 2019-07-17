@@ -90,7 +90,7 @@
 
                         <div class="form-gro up">
                             <label>F o t o</label>
-                            <input type="file" name="image" class="form-cont rol">
+                            <input type="file" name="image" class="form-cont rol" disabled>
                             <?= form_error('image', '<small class="text-danger">', '</small>'); ?>
                         </div>
 
@@ -98,9 +98,8 @@
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                        <?php
-                        echo anchor('admin/aduan_u', 'Kembali', array('class' => 'btn btn-primary'));
-                        ?>
+                        <button type="button" name="back" onclick="self.history.back()" class="btn btn-primary">kembali</button>
+
                     </div>
             </form>
         </div>

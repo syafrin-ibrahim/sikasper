@@ -52,6 +52,8 @@ class User extends CI_Controller
                 ['matches' => 'password not matches', 'min_length' => 'paasword too short']
             );
             if ($this->form_validation->run() == false) {
+                $data['level'] = $this->db->get('user_role')->result();
+                $data['kec'] = $this->db->get('kecamatan')->result();
                 $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('admin/template/header', $data);
                 $this->load->view('admin/template/navbar', $data);
@@ -59,7 +61,9 @@ class User extends CI_Controller
                 $this->load->view('admin/user/create', $data);
                 $this->load->view('admin/template/footer');
             } else {
-                $this->form_validation->set_rules('c_password', 'Password2', 'required|min_length[8]|matches[password]');
+                //$this->form_validation->set_rules('c_password', 'Password2', 'required|min_length[8]|matches[password]');
+
+
                 $this->mod_user->simpan();
                 $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -70,6 +74,8 @@ class User extends CI_Controller
         } else {
             // $data['parent'] =  $this->mod_member->select_parent()->result();
             //$this->template->load('templateadmin', 'admin/member/post', $data);
+            $data['level'] = $this->db->get('user_role')->result();
+            $data['kec'] = $this->db->get('kecamatan')->result();
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/navbar', $data);
@@ -80,13 +86,7 @@ class User extends CI_Controller
     }
 
 
-    function detail()
-    {
-        $id            = $this->uri->segment(4);
-        $data['row']   = $this->db->get_where('tabel_member', array('member_id' => $id))->row_array();
-        $data['order'] = $this->db->get_where('tabel_transaksi', array('member_id' => $id))->result();
-        $this->template->load('templateadmin', 'admin/member/detail', $data);
-    }
+
 
 
     function delete()
@@ -96,7 +96,7 @@ class User extends CI_Controller
         $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h5><i class="icon fas fa-check"></i> Alert!</h5>
-        Data Nerhasil Dihapus</div>');
+        Data Berhasil Dihapus</div>');
         redirect('admin/user');
     }
     function edit()
@@ -105,8 +105,14 @@ class User extends CI_Controller
 
 
             $this->mod_user->update();
+            $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> Alert!</h5>
+            Data Berhasil Diubah</div>');
             redirect('admin/user');
         } else {
+            //$data['level'] = $this->db->get('user_role')->result();
+            $data['kec'] = $this->db->get('kecamatan')->result();
             $id            = $this->uri->segment(4);
             $data['users']   = $this->db->get_where('users', array('user_id' => $id))->row_array();
             $data['role'] =  $this->db->get('user_role')->result();

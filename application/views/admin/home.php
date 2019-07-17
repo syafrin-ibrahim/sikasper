@@ -33,7 +33,8 @@
         </div>
       </div>
       <div class="card-body">
-        Start creating your amazing application!
+        <h2> Hai <?php echo $user['nama']; ?></h2>
+        <p>1. Klick Menu home &nbsp; &nbsp; &nbsp; <i class="fas fa-bars"></i> &nbsp; &nbsp; Sebelah Kiri atas Untuk melihat Menu</p>
       </div>
       <!-- /.card-body -->
       <div class="card-footer">

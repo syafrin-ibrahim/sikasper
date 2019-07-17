@@ -58,12 +58,13 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
-
-
                 <a href="<?= base_url(); ?>" class="text-center">I already have a membership</a>
+                <small>
+
+
         </div>
-        <!-- /.form-box -->
-    </div><!-- /.card -->
-    </div>
-    <!-- /.register-box -->
+        <!-- /.card -->
+
+    </div><!-- /.register box -->
+
+    <!-- /.hold -->

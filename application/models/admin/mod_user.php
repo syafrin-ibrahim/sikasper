@@ -20,6 +20,7 @@ class Mod_user extends Ci_Model
             'email' => htmlspecialchars(($this->input->post('email', true))),
             'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
             'image' => 'default-image.jpg',
+            'kec_id' => $this->input->post('kecamatan'),
             'role_id' => htmlspecialchars(($this->input->post('level', true))),
             'is_active' => htmlspecialchars(($this->input->post('status', true))),
             'created_at' => date('Y-m-d')
@@ -33,6 +34,7 @@ class Mod_user extends Ci_Model
         $data = array(
             'nama'     =>  $this->input->post('nama'),
             'email'            =>  $this->input->post('email'),
+            'kec_id'    => $this->input->post('kecamatan'),
             'is_active'              =>  $this->input->post('status'),
             'role_id' =>  $this->input->post('level')
         );

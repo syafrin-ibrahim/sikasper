@@ -60,9 +60,8 @@ class Aduan_u extends CI_Controller
             } else {
 
 
-                //$this->mod_aduan->simpan();
+                $this->mod_aduan->simpan();
                 $this->_sendEmail();
-                die;
 
                 $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -117,10 +116,10 @@ class Aduan_u extends CI_Controller
         $mail->addAddress($adm);
         $mail->addCC($kd);
         $mail->addBCC($kc);
-        $mail->Subject = 'ada aduan baru';
+        $mail->Subject = "aduan baru " . $this->input->post('judul') . " ";
         $mail->isHTML(true);
 
-        $content = "<h1>Ada Aduan Pengeboman Ikan</h1>";
+        $content = "<p" . $this->input->post('ket') . "</p>";
         $mail->Body = $content;
 
         if (!$mail->send()) {

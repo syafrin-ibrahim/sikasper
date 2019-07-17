@@ -1,4 +1,23 @@
 <!-- Content Wrapper. Contains page content -->
+<script src="<?= base_url('asset/plugins/jquery/jquery.min.js'); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#kecamatan').hide();
+        $("#level-user").on('change', function() {
+            var idl = $('#level-user option:selected').val();
+            if (idl == 3) {
+                $('#kecamatan').show();
+            } else if (idl == 1) {
+                $('#kecamatan').hide();
+            } else if (idl == 2) {
+                $('#kecamatan').hide();
+            } else if (idl == 4) {
+                $('#kecamatan').hide();
+            }
+        })
+    });
+</script>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -32,17 +51,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Nama User</label>
-                            <input type="text" class="form-control" name="nama" value="<?= set_value('nama') ?>">
+                            <input type="text" class="form-control" name="nama" value="<?= set_value('nama') ?>" required>
                             <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" name="email" value="<?= set_value('email') ?>">
+                            <input type="email" class="form-control" name="email" value="<?= set_value('email') ?>" required>
                             <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required>
                             <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
@@ -52,11 +71,26 @@
                         </div>
                         <div class="form-group">
                             <label>Level</label>
-                            <select name="level" class="form-control">
-                                <option value="1">Administrator</option>
-                                <option value="2">Kepala SKPD</option>
-                                <option value="3">Admin Kecamatan</option>
-                                <option value="4">User</option>
+                            <select id="level-user" name="level" class="form-control" required>
+                                <option value="">:. Pilih Level User .:</option>
+                                <?php
+
+                                foreach ($level as $b) {
+                                    echo " <option value='" . $b->role_id . "'>" . $b->role . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group" id="kec">
+                            <label>kecamatan</label>
+                            <select id="kecamatan" name="kecamatan" class="form-control">
+                                <option value="">:. Pilih Kecamatan .:</option>
+                                <?php
+
+                                foreach ($kec as $c) {
+                                    echo " <option value='" . $c->kec_id . "'>" . $c->nama_kec . "</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -76,9 +110,8 @@
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                        <?php
-                        echo anchor('admin/user', 'Kembali', array('class' => 'btn btn-primary'));
-                        ?>
+                        <button type="button" name="back" onclick="self.history.back()" class="btn btn-primary">kembali</button>
+
                     </div>
             </form>
         </div>

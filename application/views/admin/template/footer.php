@@ -24,6 +24,9 @@
 <script src="<?= base_url('asset'); ?>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('asset'); ?>/dist/js/demo.js"></script>
+<script src="<?= base_url('asset'); ?>/dist/js/alert/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('asset'); ?>/dist/js/alert/myscript.js"></script>
+
 </body>
 
 </html>

@@ -38,9 +38,8 @@
 
                         <div class="box-footer">
                             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                            <?php
-                            echo anchor('admin/kecamatan', 'Kembali', array('class' => 'btn btn-primary'));
-                            ?>
+                            <button type="button" name="back" onclick="self.history.back()" class="btn btn-primary">kembali</button>
+
                         </div>
             </form>
         </div>

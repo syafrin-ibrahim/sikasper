@@ -83,9 +83,8 @@
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary">DISELESAIKAN</button>
-                        <?php
-                        echo anchor('admin/aduan_kds', 'Kembali', array('class' => 'btn btn-primary'));
-                        ?>
+                        <button type="button" name="back" onclick="self.history.back()" class="btn btn-primary">kembali</button>
+
                     </div><br />
             </form>
         </div>

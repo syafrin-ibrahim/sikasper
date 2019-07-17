@@ -1,3 +1,21 @@
+<script src="<?= base_url('asset/plugins/jquery/jquery.min.js'); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#kecamatan').hide();
+        $("#level-user").on('change', function() {
+            var idl = $('#level-user option:selected').val();
+            if (idl == 3) {
+                $('#kecamatan').show();
+            } else if (idl == 1) {
+                $('#kecamatan').hide();
+            } else if (idl == 2) {
+                $('#kecamatan').hide();
+            } else if (idl == 4) {
+                $('#kecamatan').hide();
+            }
+        })
+    });
+</script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -44,7 +62,7 @@
 
                         <div class="form-group">
                             <label>Level</label>
-                            <select name="level" class="form-control">
+                            <select id="level-user" name="level" class="form-control" required>
                                 <?php
                                 foreach ($role as $k) {
                                     echo "<option value='$k->role_id' ";
@@ -54,6 +72,19 @@
                                 ?>
                             </select>
 
+                        </div>
+
+                        <div class="form-group" id="kec">
+                            <label>kecamatan</label>
+                            <select id="kecamatan" name="kecamatan" class="form-control">
+                                <option value="">:. Pilih Kecamatan .:</option>
+                                <?php
+
+                                foreach ($kec as $c) {
+                                    echo " <option value='" . $c->kec_id . "'>" . $c->nama_kec . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Status</label>
@@ -76,8 +107,9 @@
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" name="back" onclick="self.history.back()" class="btn btn-primary">kembali</button>
                         <?php
-                        echo anchor('admin/user', 'Kembali', array('class' => 'btn btn-primary'));
+                        //echo anchor('admin/user', 'Kembali', array('class' => 'btn btn-primary'));
                         ?>
                     </div>
             </form>

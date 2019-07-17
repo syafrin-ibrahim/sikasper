@@ -69,9 +69,9 @@
                                 <td>" . $y . "</td>
                                 <td>" . $x . "</td>
                                 <td>" . anchor("admin/user/edit/" . $a->user_id, "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
-                                <td>" . anchor("admin/user/delete/" . $a->user_id, "<i class='fas fa-trash-alt'></i>", array('title' => 'delete data')) . "</tdidth='10'>
-                            </tr>";
-                            $no++;
+                                <td>"; ?><a href="<?= base_url('admin/user/delete/' . $a->user_id); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
+                            </tr>
+                            <?php $no++;
                         }
                         ?>
 

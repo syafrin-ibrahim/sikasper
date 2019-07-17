@@ -43,6 +43,7 @@ class Aduan_a extends CI_Controller
 
             $idx = $this->input->post('id');
             $this->mod_aduan->update_adm();
+            $this->_sendEmail();
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -59,6 +60,51 @@ class Aduan_a extends CI_Controller
             $this->load->view('admin/template/sidebar', $data);
             $this->load->view('admin/aduan/aksi_adm', $data);
             $this->load->view('admin/template/footer');
+        }
+    }
+
+    private function _sendEmail()
+    {
+        $kec = $this->input->post('kec');
+        $data['bos'] = $this->db->get_where('users', array('role_id' => 2))->row_array();
+
+
+        $data['admin'] = $this->db->get_where('users', array('role_id' => 1))->row_array();
+
+
+        //$adm = $data['admin']['email'];
+        $kd = $data['bos']['email'];
+
+
+        $this->load->library('phpmailer_lib');
+        $mail = $this->phpmailer_lib->load();
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'mansurmoji@gmail.com';
+        $mail->Password = 'mansurmoji07';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
+
+        $mail->setFrom('mansurmoji@gmail.com', 'sikasper admin');
+        $mail->addReplyTo('mansurmoji@gmail.com', 'sikasper admin');
+
+        $mail->addAddress($kd);
+
+
+        $mail->Subject = 'aduan disposisi ke  kadis ';
+        $mail->isHTML(true);
+
+        $content = "<p" . $this->input->post('ket') . "</p>";
+        $mail->Body = $content;
+
+        if (!$mail->send()) {
+            echo "pesan tidak terkirim";
+            echo "mail error : " .  $mail->ErrorInfo;
+            die;
+        } else {
+            echo "pesan terkirim";
         }
     }
 }
