@@ -1,4 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -30,6 +32,9 @@
             ?>
             <form role="form" method="post" action="<?= base_url('admin/aduan_u/create') ?>" enctype="multipart/form-data">
                 <input type="hidden" name="id_user" value="<?= $user['user_id']; ?>">
+
+
+
                 <div class="box-body">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -48,6 +53,8 @@
                             <?= form_error('telp', '<small class="text-danger">', '</small>'); ?>
 
                         </div>
+
+
                         <div class="form-group">
                             <label>Kecamatan</label>
                             <select name="kec" class="form-control">
@@ -77,7 +84,7 @@
                         <div class="form-group">
                             <label> Keterangan </label>
                             <textarea class="textarea" name="ket" placeholder="Place some text here" class="form-control" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ; ">
-                            </textarea>
+                                </textarea>
                             <?= form_error('ket', '<small class="text-danger">', '</small>'); ?>
                         </div>
 

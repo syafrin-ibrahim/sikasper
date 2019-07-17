@@ -21,6 +21,7 @@ class Aduan_u extends CI_Controller
     public function index()
     {
         //$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $id = $data['user']['user_id'];
         $data['record'] = $this->mod_aduan->select_by_user($id)->result();
@@ -58,8 +59,11 @@ class Aduan_u extends CI_Controller
                 $this->load->view('admin/template/footer');
             } else {
 
+
                 //$this->mod_aduan->simpan();
                 $this->_sendEmail();
+                die;
+
                 $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -84,29 +88,17 @@ class Aduan_u extends CI_Controller
 
     private function _sendEmail()
     {
-        /* $config = [
-            'protocol' => 'ssmtp',
-            'ssmtp_host' => 'ssl://ssmtp.googlemail.com',
-            'ssmtp_user' => 'mansurmoji@gmail.com',
-            'ssmtp_pass' => 'mansurmoji07',
-            'ssmtp_ port' => '465',
-            'ssmtp_timeout' => '7',
-            'mailtype' => 'html',
-            'charset'   => 'utf-8',
-            'newline'   => "\r\n"
-        ];
-        $this->load->library('email', $config);
-        $this->email->initialize($config);
-        $this->email->from('mansurmoji@gmail.com', 'sikasper admin');
-        $this->email->to('syafrinibrahim12@gmail.com');
-        $this->email->subject('ada aduan baru');
-        $this->email->message('aduan penegboman ikan di laut');
-        if ($this->email->send()) {
-            return true;
-        } else {
-            echo $this->email->print_debugger();
-            die;
-        }*/
+        $kec = $this->input->post('kec');
+        $data['bos'] = $this->db->get_where('users', array('role_id' => 2))->row_array();
+        //echo $data['bos']['email'] . "<br/>";
+
+        $data['admin'] = $this->db->get_where('users', array('role_id' => 1))->row_array();
+        //echo $data['admin']['email'] . "<br/>";
+        $data['record'] = $this->db->query("select * from users where role_id='3' and kec_id=$kec")->row_array();
+
+        $adm = $data['admin']['email'];
+        $kd = $data['bos']['email'];
+        $kc = $data['record']['email'];
 
         $this->load->library('phpmailer_lib');
         $mail = $this->phpmailer_lib->load();
@@ -122,8 +114,9 @@ class Aduan_u extends CI_Controller
         $mail->setFrom('mansurmoji@gmail.com', 'sikasper admin');
         $mail->addReplyTo('mansurmoji@gmail.com', 'sikasper admin');
 
-        $mail->addAddress('syafrinibrahim12@gmail.com');
-
+        $mail->addAddress($adm);
+        $mail->addCC($kd);
+        $mail->addBCC($kc);
         $mail->Subject = 'ada aduan baru';
         $mail->isHTML(true);
 
@@ -136,7 +129,6 @@ class Aduan_u extends CI_Controller
             die;
         } else {
             echo "pesan terkirim";
-            die;
         }
     }
     public function aksi()

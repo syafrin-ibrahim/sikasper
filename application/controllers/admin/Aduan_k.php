@@ -21,11 +21,14 @@ class Aduan_k extends CI_Controller
     public function index()
     {
 
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db->get_where('users', [
+            'email' => $this->session->userdata('email'),
+            'kec_id' => $this->session->userdata('kec_id')
+        ])->row_array();
         //  $data['aduan'] = $this->mod_aduan->select_all()->result();
         //$data['kec'] = $this->db->get('kecamatan')->result();
         //$data['kateg'] = $this->db->get('kategori_aduan')->result();
-        $data['record'] = $this->mod_aduan->select_kec()->result();
+        $data['record'] = $this->mod_aduan->select_kec($data['user']['kec_id'])->result();
         $this->load->view('admin/template/header', $data);
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
