@@ -31,6 +31,16 @@ class Mod_aduan extends Ci_Model
         return $this->db->query($query);
     }
 
+    function select_lap($id)
+    {
+        // return $this->db->get('aduan');
+        $query = "SELECT tb1.aduan_id,tb1.tgl_aduan,tb1.judul,tb1.tgl_aduan,tb2.nama_kec,
+        tb3.status, tb3.sts_id
+       FROM aduan as tb1,kecamatan as tb2, sts_aduan as tb3
+       WHERE tb1.kec_id=tb2.kec_id and tb1.sts_id=tb3.sts_id and tb1.aduan_id=$id";
+        return $this->db->query($query);
+    }
+
     function select_kds()
     {
         // return $this->db->get('aduan');

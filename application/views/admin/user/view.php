@@ -43,11 +43,20 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php
                         $no = 1;
 
                         foreach ($admin as $a) {
+                            foreach ($kec as $b) {
+
+                                if ($a->role_id == 3) {
+                                    if ($a->kec_id == $b->kec_id) {
+                                        $y = $b->nama_kec;
+                                    }
+                                }
+                            }
                             if ($a->is_active == 1) {
                                 $x = "aktif";
                             } else {
@@ -57,11 +66,10 @@
                                 $y = "administrator";
                             } elseif ($a->role_id == 2) {
                                 $y = "Kepala Dinas";
-                            } elseif ($a->role_id == 3) {
-                                $y = "Admin Kecamatan";
                             } else if ($a->role_id == 4) {
                                 $y = "User";
                             }
+
                             echo "<tr>
                                 <td>" . $no . "</td>
                                 <td>" . $a->nama . "</td>

@@ -34,33 +34,32 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Judul</label>
-                            <input type="text" class="form-control" name="judul" value="<?= $aduan['judul']; ?>" disabled>
+                            <input type="text" class="form-control" name="judul" value="<?= $aduan['judul']; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <textarea name="alamat" class="textarea" class="form-control" placeholder="Place some text here" style="width: 100%; height: 130px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" disabled>
-                           <?= $aduan['alamat_aduan']; ?> 
+                            <textarea name="alamat" class="textarea" class="form-control" placeholder="Place some text here" style="width: 100%; height: 130px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly="readonly">                          <?= $aduan['alamat_aduan']; ?> 
                         </textarea>
 
                         </div>
                         <div class="form-group">
                             <label>No Telp</label>
-                            <input type="number" class="form-control" name="telp" value="<?= $aduan['no_hp']; ?>" disabled>
+                            <input type="number" class="form-control" name="telp" value="<?= $aduan['no_hp']; ?>" readonly="readonly">
 
 
                         </div>
                         <div class="form-group">
                             <label>Kecamatan</label>
-                            <input type="text" class="form-control" name="kec" value="<?= $aduan['nama_kec']; ?>" disabled>
+                            <input type="text" class="form-control" name="kec" value="<?= $aduan['nama_kec']; ?>" readonly="readonly"
 
 
                         </div>
                         <div class="form-group">
                             <label> Keterangan </label>
-                            <textarea class="textarea" name="ket" placeholder="Place some text here" class="form-control" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ; " disabled>
+                            <textarea class="textarea" name="ket" placeholder="Place some text here" class="form-control" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ; " readonly="readonly">
                             <?= $aduan['keterangan']; ?> 
-                            </textarea>
+                           </textarea>
 
                         </div>
                         <div class="form-group">

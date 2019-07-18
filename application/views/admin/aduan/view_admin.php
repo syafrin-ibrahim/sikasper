@@ -39,6 +39,7 @@
                             <th>Tanggal</th>
                             <th>Status</th>
                             <th>Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,12 +65,15 @@
                             if ($a->sts_id == 4 || $a->sts_id == 3) {
                                 echo $button . "                               
                                 <td><i class='far fa-folder-open'></i></td>
-                                </tr>";
+                                ";
                             } else {
                                 echo $button . "                               
                                 <td>" . anchor("admin/aduan_a/aksi_adm/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
-                                </tr>";
+                                ";
                             }
+                            echo"<td><a href='".base_url('admin/Lap_a/aduan/').$a->aduan_id."' target='_blank'><i class='fas fa-print'></i></a></td></tr>";
+                           // echo"<td><a href='".base_url('admin/Lap_a')."'><i class='fas fa-print'></i></a></td></tr>";
+
                             $no++;
                         }
                         ?>
@@ -83,6 +87,7 @@
                             <th>Platform(s)</th>
                             <th>Engine version</th>
                             <th>CSS grade</th>
+                            <th>#</th>
                             <th>#</th>
 
                         </tr>

@@ -110,7 +110,7 @@ class Aduan_k extends CI_Controller
         $mail->Subject = 'aduan limpahkan ke adminnistrator ';
         $mail->isHTML(true);
 
-        $content = "<p" . $this->input->post('ket') . "</p>";
+        $content = "<p>" . $this->input->post('ket') . "</p>";
         $mail->Body = $content;
 
         if (!$mail->send()) {

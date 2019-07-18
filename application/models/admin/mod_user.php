@@ -7,9 +7,11 @@ class Mod_user extends Ci_Model
         return $this->db->get('users');
     }
 
-    function select_parent()
+    function select_kec()
     {
-        //return $this->db->get_where('tabel_member', array('parent' => 0));
+        $query = "select * from users, user_role where
+                  users.role_id=user_role.role_id";
+        return $this->db->query($query);
     }
 
 

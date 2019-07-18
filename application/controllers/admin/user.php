@@ -19,7 +19,8 @@ class User extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $data['admin'] = $this->db->get('users')->result();
+        $data['kec'] =  $this->db->get('kecamatan')->result();
+        $data['admin'] = $this->mod_user->select_kec()->result();
         $this->load->view('admin/template/header', $data);
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
