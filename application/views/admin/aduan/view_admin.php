@@ -71,8 +71,8 @@
                                 <td>" . anchor("admin/aduan_a/aksi_adm/" . $a->aduan_id, "<i class='far fa-folder-open'></i>", array('title' => 'edit data')) . "</td>
                                 ";
                             }
+                            //echo"<td><a href='".base_url('admin/Lap_a/').$a->aduan_id."'><i class='fas fa-print'></i></a></td></tr>";
                             echo"<td><a href='".base_url('admin/Lap_a/aduan/').$a->aduan_id."' target='_blank'><i class='fas fa-print'></i></a></td></tr>";
-                           // echo"<td><a href='".base_url('admin/Lap_a')."'><i class='fas fa-print'></i></a></td></tr>";
 
                             $no++;
                         }
