@@ -30,6 +30,7 @@
             <!-- /.card-header -->
 
             <div class="card-body" style="overflow:auto;">
+                <a href="<?= base_url('admin/Lap_a/aduanAll'); ?>"><i class='fas fa-print'></i></a>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -72,7 +73,7 @@
                                 ";
                             }
                             //echo"<td><a href='".base_url('admin/Lap_a/').$a->aduan_id."'><i class='fas fa-print'></i></a></td></tr>";
-                            echo"<td><a href='".base_url('admin/Lap_a/aduan/').$a->aduan_id."' target='_blank'><i class='fas fa-print'></i></a></td></tr>";
+                            echo "<td><a href='" . base_url('admin/Lap_a/aduan/') . $a->aduan_id . "'><i class='fas fa-print'></i></a></td></tr>";
 
                             $no++;
                         }
