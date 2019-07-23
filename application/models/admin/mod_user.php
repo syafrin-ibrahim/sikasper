@@ -24,7 +24,8 @@ class Mod_user extends Ci_Model
             'image' => 'default-image.jpg',
             'kec_id' => $this->input->post('kecamatan'),
             'role_id' => htmlspecialchars(($this->input->post('level', true))),
-            'is_active' => htmlspecialchars(($this->input->post('status', true))),
+            'is_active' => 0,
+
             'created_at' => date('Y-m-d')
         ];
         $this->db->insert('users', $data);

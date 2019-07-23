@@ -64,10 +64,21 @@
                             </textarea>
 
                         </div>
+
                         <div class="form-group">
                             <label>Status Aduan</label>
                             <input type="text" class="form-control" value="<?= $aduan['status']; ?>" readonly="readonly">
 
+                        </div>
+                        <div class="form-group">
+                            <label>Ubah Status Aduan</label>
+                            <select name="status" class="form-control" required>
+                                <option value="">:. pilih status aduan .:</option>
+                                <option value="7">telaah aduan</option>
+                                <option value="8">verifikasi</option>
+                                <option value="4">selesai</option>
+                            </select>
+                            <?= form_error('level', '<small class="text-danger">', '</small>'); ?>
                         </div>
 
 
@@ -82,7 +93,7 @@
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" name="submit" class="btn btn-primary">DISPOSISI KADIS</button>
+                        <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
                         <button type="button" name="back" onclick="self.history.back()" class="btn btn-primary">kembali</button>
 
                     </div><br />

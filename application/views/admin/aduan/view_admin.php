@@ -57,6 +57,12 @@
                                 $button = " <td><button class='btn btn-info btn-sm'>" . $a->status . "</button></td>";
                             } else if ($a->sts_id == 4) {
                                 $button = " <td><button class='btn btn-primary btn-sm'>" . $a->status . "</button></td>";
+                            } else if ($a->sts_id == 7) {
+                                $button = " <td><button class='btn btn-primary btn-sm'>" . $a->status . "</button></td>";
+                            } else if ($a->sts_id == 8) {
+                                $button = " <td><button class='btn btn-primary btn-sm'>" . $a->status . "</button></td>";
+                            } else if ($a->sts_id == 6) {
+                                $button = " <td><button class='btn btn-primary btn-sm'>" . $a->status . "</button></td>";
                             }
                             echo "<tr>
                                 <td>" . $no . "</td>

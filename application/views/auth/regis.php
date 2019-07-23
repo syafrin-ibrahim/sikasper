@@ -58,7 +58,7 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                <a href="<?= base_url(); ?>" class="text-center">I already have a membership</a>
+                <a href="<?= base_url(); ?>" class="text-center">Sudah punya akun, login</a>
                 <small>
 
 

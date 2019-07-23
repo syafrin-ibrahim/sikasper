@@ -57,11 +57,17 @@
                             if ($a->sts_id == 1) {
                                 $button = " <td><button class='btn btn-success btn-sm'>" . $a->status . "</button></td>";
                             } else if ($a->sts_id == 2) {
-                                $button = " <td><button class='btn btn-warning btn-sm'>" . $a->status . "</button></td>";
+                                $button = " <td><button class='btn btn-default btn-sm'>proses di DLH</button></td>";
                             } else if ($a->sts_id == 3) {
                                 $button = " <td><button class='btn btn-info btn-sm'>" . $a->status . "</button></td>";
                             } else if ($a->sts_id == 4) {
-                                $button = " <td><button class='btn btn-primary btn-sm'>" . $a->status . "</button></td>";
+                                $button = " <td><button class='btn btn-default btn-sm'>" . $a->status . "</button></td>";
+                            } else if ($a->sts_id == 7) {
+                                $button = " <td><button class='btn btn-primary btn-sm'>proses di DLH</button></td>";
+                            } else if ($a->sts_id == 8) {
+                                $button = " <td><button class='btn btn-default btn-sm'> proses di DLH </button></td>";
+                            } else if ($a->sts_id == 6) {
+                                $button = " <td><button class='btn btn-default btn-sm'> proses di Kecamatan </button></td>";
                             }
                             echo "<tr>
                                 <td>" . $no . "</td>

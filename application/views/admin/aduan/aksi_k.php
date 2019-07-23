@@ -51,11 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label>Kecamatan</label>
-                            <input type="text" class="form-control" name="kec" value="<?= $aduan['nama_kec']; ?>" readonly="readonly"
-
-
-                        </div>
-                        <div class="form-group">
+                            <input type="text" class="form-control" name="kec" value="<?= $aduan['nama_kec']; ?>" readonly="readonly" </div> <div class="form-group">
                             <label> Keterangan </label>
                             <textarea class="textarea" name="ket" placeholder="Place some text here" class="form-control" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ; " readonly="readonly">
                             <?= $aduan['keterangan']; ?> 
@@ -78,9 +74,9 @@
                             <label>Ubah Status Aduan</label>
                             <select name="status" class="form-control" required>
                                 <option value="">:. pilih status aduan .:</option>
-                                <option value="2">tindak-lanjuti</option>
+                                <option value="2">proses di DLH</option>
+                                <option value="6">proses di kecamatan</option>
                                 <option value="4">selesai</option>
-
                             </select>
                             <?= form_error('level', '<small class="text-danger">', '</small>'); ?>
                         </div>

@@ -18,12 +18,13 @@
 <script src="<?= base_url('asset'); ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('asset'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 
 
-
+<script src="<?= base_url('asset'); ?>/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('asset'); ?>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
